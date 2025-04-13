@@ -1,0 +1,16 @@
+.btn {
+    width: 200px;
+    height: 50px;
+    padding: 10px 20px;
+    margin: 20px auto;
+    display: block;
+    background-color: #646cff;
+    color: #fff;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+    font-size: large;
+}
+
+.btn:hover,
+.btn:focus {
+    background-color: #535bf2;
+}
