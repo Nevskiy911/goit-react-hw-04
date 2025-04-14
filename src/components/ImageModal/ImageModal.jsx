@@ -1,22 +1,28 @@
+import Modal from "react-modal";
 import s from "./ImageModal.module.css";
 
-const Modal = ({ image, onClose }) => {
+Modal.setAppElement("#root");
+
+export default function ImageModal({ isOpen, image, onRequestClose }) {
   if (!image) return null;
 
   return (
-    <div className={s.overlay} onClick={onClose}>
-      <div className={s.modal} onClick={(e) => e.stopPropagation()}>
-        <button className={s.closeBtn} onClick={onClose}>
-          &times;
-        </button>
-        <img
-          src={image.urls.regular}
-          alt={image.alt_description}
-          className={s.image}
-        />
-      </div>
-    </div>
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={onRequestClose}
+      shouldCloseOnOverlayClick={true}
+      shouldCloseOnEsc={true}
+      className={s.modal}
+      overlayClassName={s.overlay}
+    >
+      <button onClick={onRequestClose} className={s.closeButton}>
+        &times;
+      </button>
+      <img
+        src={image.urls.full}
+        alt={image.alt_description || "Image"}
+        className={s.image}
+      />
+    </Modal>
   );
-};
-
-export default Modal;
+}
